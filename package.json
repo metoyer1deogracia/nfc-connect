@@ -1,0 +1,17 @@
+{
+  "name": "nfc-connect",
+  "version": "1.0.0",
+  "description": "Application de transfert de fichiers via NFC",
+  "main": "index.js",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/metoyer1deogracia/nfc-connect.git"
+  },
+  "author": "metoyer1deogracia",
+  "license": "MIT"
+}

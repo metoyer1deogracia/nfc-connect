@@ -1,0 +1,6 @@
+cat > monitoring/datadog.yaml << EOL
+api_key: \${f2258479216558e6660d0c601da4a6c8}
+logs_enabled: true
+apm_config:
+  enabled: true
+EOL
