@@ -29,3 +29,7 @@ ansible-playbook -i inventory.yml deploy.yml
 
 echo "✅ Déploiement terminé!"
 echo "🌐 Application accessible sur: http://$SERVER_IP"
+
+# Installation et configuration Datadog
+echo '📊 Configuration du monitoring Datadog...'
+./monitoring/install_agent.sh

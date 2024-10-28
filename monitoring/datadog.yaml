@@ -1,32 +1,11 @@
-api_key: 
+api_key: f2258479216558e6660d0c601da4a6c8
 site: datadoghq.eu
 logs_enabled: true
 apm_config:
   enabled: true
 
-# Configuration pour React
-rum:
-  enabled: true
-  application_id: 
-  client_token: 
-
-# Métriques custom
-dogstatsd_mapper_profiles:
-  - name: nfc_metrics
-    prefix: "nfc."
-    mappings:
-      - match: "transfer.*"
-        name: "transfer"
-        tags:
-          - "type:nfc"
-
-# Intégrations
 integrations:
-  - name: aws
-    instances:
-      - aws_access_key_id: 
-        aws_secret_access_key: 
-        services:
-          - ec2
-          - s3
-          - dynamodb
+  aws:
+    api_key: f2258479216558e6660d0c601da4a6c8
+    app_key: ${DD_APP_KEY}
+    account_id: ${AWS_ACCOUNT_ID}
