@@ -1,6 +1,32 @@
-cat > monitoring/datadog.yaml << EOL
-api_key: \${f2258479216558e6660d0c601da4a6c8}
+api_key: 
+site: datadoghq.eu
 logs_enabled: true
 apm_config:
   enabled: true
-EOL
+
+# Configuration pour React
+rum:
+  enabled: true
+  application_id: 
+  client_token: 
+
+# Métriques custom
+dogstatsd_mapper_profiles:
+  - name: nfc_metrics
+    prefix: "nfc."
+    mappings:
+      - match: "transfer.*"
+        name: "transfer"
+        tags:
+          - "type:nfc"
+
+# Intégrations
+integrations:
+  - name: aws
+    instances:
+      - aws_access_key_id: 
+        aws_secret_access_key: 
+        services:
+          - ec2
+          - s3
+          - dynamodb

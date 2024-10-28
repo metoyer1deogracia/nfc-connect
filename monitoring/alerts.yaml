@@ -1,0 +1,30 @@
+alerts:
+  - name: "Temps de réponse élevé"
+    type: "metric alert"
+    query: "avg(last_5m):avg:trace.http.request{service:nfc-connect} > 1"
+    message: |
+      Le temps de réponse de l'application est supérieur à 1 seconde.
+      @slack-nfc-connect-alerts
+    thresholds:
+      critical: 1.0
+      warning: 0.8
+
+  - name: "Erreurs NFC"
+    type: "metric alert"
+    query: "sum(last_5m):sum:nfc.transfer.error{*} > 5"
+    message: |
+      Trop d'erreurs de transfert NFC détectées.
+      @slack-nfc-connect-alerts
+    thresholds:
+      critical: 5
+      warning: 3
+
+  - name: "Utilisation CPU"
+    type: "metric alert"
+    query: "avg(last_5m):avg:system.cpu.user{service:nfc-connect} > 80"
+    message: |
+      Utilisation CPU élevée détectée.
+      @slack-nfc-connect-alerts
+    thresholds:
+      critical: 80
+      warning: 70
