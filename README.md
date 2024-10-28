@@ -20,3 +20,26 @@ Application de transfert de fichiers via NFC avec interface React, déploiement 
 - `monitoring/` - Configuration Datadog
 - `scripts/` - Scripts utilitaires
 - `docs/` - Documentation
+
+## 📊 Monitoring
+
+### Configuration Datadog
+1. L'agent Datadog est configuré pour surveiller :
+   - Performances application
+   - Métriques système
+   - Logs applicatifs
+   - Real User Monitoring (RUM)
+
+### Métriques surveillées
+- Temps de réponse API
+- Transferts NFC
+- Utilisation ressources
+- Expérience utilisateur
+
+### Configuration requise
+```bash
+# Variables d'environnement nécessaires
+DD_APPLICATION_ID=your_app_id
+DD_CLIENT_TOKEN=your_client_token
+DATADOG_API_KEY=your_api_key
+```
