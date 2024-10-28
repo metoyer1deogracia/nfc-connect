@@ -1,0 +1,43 @@
+---
+- name: Deploy NFC Connect Application
+  hosts: app_servers
+  become: yes
+  vars:
+    app_name: nfc-connect
+    app_user: ubuntu
+    app_path: /var/www/nfc-connect
+
+  tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+        cache_valid_time: 3600
+
+    - name: Install required packages
+      apt:
+        name:
+          - nodejs
+          - npm
+          - nginx
+          - certbot
+          - python3-certbot-nginx
+        state: present
+
+    - name: Configure Nginx
+      template:
+        src: templates/nginx.conf
+        dest: /etc/nginx/sites-available/{{ app_name }}
+      notify: reload nginx
+
+    - name: Enable Nginx site
+      file:
+        src: /etc/nginx/sites-available/{{ app_name }}
+        dest: /etc/nginx/sites-enabled/{{ app_name }}
+        state: link
+      notify: reload nginx
+
+  handlers:
+    - name: reload nginx
+      service:
+        name: nginx
+        state: reloaded
